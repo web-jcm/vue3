@@ -1,27 +1,32 @@
 <template>
   <el-card shadow="hover">
-    {{ title }}<el-tag shadow="hover">{{ subtitle }}</el-tag>
+    {{ someValue + "." + title }}<el-tag shadow="hover">{{ subtitle }}</el-tag>
   </el-card>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
-import { get } from "../request/http";
+import { computed, defineComponent } from "vue";
+import { mapState, useStore } from "vuex";
 export default defineComponent({
   name: "Home",
-  setup() {},
-  data() {
+  setup() {
+    const store = useStore();
+    const getText = () => store.dispatch('home/getText')
     return {
-      title: "",
-      subtitle: "",
+      title: computed(() => store.state.home.title),
+      subtitle: computed(() => store.state.home.subtitle),
+      getText
     };
   },
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState({
+      someValue: (state: any) => state.someValue,
+    }),
+  },
   mounted() {
-    get("sentences").then((res: any) => {
-      if (res.code === 200) {
-        this.title = res.result.name;
-        this.subtitle = res.result.from;
-      }
-    });
+    this.getText()
   },
 });
 </script>

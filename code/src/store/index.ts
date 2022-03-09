@@ -1,8 +1,11 @@
 import { createStore } from "vuex";
+import home from "./modules/home";
 
 export default createStore({
-	state:{
-		someValue: 0
-	},
-	modules:{}
-})
+  state: {
+    someValue: 1,
+  },
+  modules: {
+    home: home,
+  },
+});
