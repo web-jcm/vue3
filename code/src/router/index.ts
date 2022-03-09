@@ -7,6 +7,6 @@ const routes = [
   },
 ];
 export default createRouter({
-  history: createWebHashHistory(),
+  history: createWebHashHistory('/vue3/'),
   routes,
 });
