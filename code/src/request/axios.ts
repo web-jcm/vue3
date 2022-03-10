@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-const baseURL = "http://poetry.apiopen.top/";
+const baseURL = "https://v1.hitokoto.cn/";
 const axios = Axios.create({
   baseURL, // 基础 url
   timeout: 10000, // 超时 10s

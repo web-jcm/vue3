@@ -10,11 +10,12 @@ export default defineComponent({
   name: "Home",
   setup() {
     const store = useStore();
-    const getText = () => store.dispatch('home/getText')
+    const getText = () =>
+      store.dispatch("home/getText");
     return {
       title: computed(() => store.state.home.title),
       subtitle: computed(() => store.state.home.subtitle),
-      getText
+      getText,
     };
   },
   data() {
@@ -26,7 +27,7 @@ export default defineComponent({
     }),
   },
   mounted() {
-    this.getText()
+    this.getText();
   },
 });
 </script>

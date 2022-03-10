@@ -18,12 +18,12 @@ const mutations = {
 };
 
 const actions = {
-  getText({ commit, state }: any, payload: any) {
-    get("sentences").then((res: any) => {
-      if (res.code === 200) {
+  getText({ commit, state }: any, payload?: any) {
+    get("", payload).then((res: any) => {
+      if (res) {
         commit("setText", {
-          title: res.result.name,
-          subtitle: res.result.from,
+          title: res.hitokoto,
+          subtitle: res.creator,
         });
       }
     });

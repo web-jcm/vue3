@@ -11,13 +11,14 @@ export default defineConfig({
   server: {
     port: 3000, // 端口
     open: true, // 启动打开浏览器
-    cors: true, // 跨域
     proxy: {
       "/api": {
-        target: "http://localhost:8080/api/", // 目标地址
+        target: "https://v1.hitokoto.cn/", // 目标地址
         changeOrigin: true, // 修改源
-        secure: false, // ssl
-        rewrite: (path) => path.replace("/api/", "/"),
+        rewrite: (path) => {
+          console.log(path)
+          return path.replace("/api", "")
+        },
       },
     },
   },
